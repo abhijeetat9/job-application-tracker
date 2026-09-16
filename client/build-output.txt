@@ -1,0 +1,74 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 317B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 78B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.46kB done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752
+#6 resolve docker.io/library/nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 0.0s done
+#6 DONE 0.0s
+
+#7 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#7 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#7 DONE 0.0s
+
+#8 [builder 3/6] COPY package*.json ./
+#8 CACHED
+
+#9 [builder 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [builder 4/6] RUN npm install
+#10 CACHED
+
+#11 [builder 5/6] COPY . .
+#11 DONE 0.0s
+
+#12 [builder 6/6] RUN npm run build
+#12 0.159 
+#12 0.159 > client@0.0.0 build
+#12 0.159 > vite build
+#12 0.159 
+#12 0.389 vite v8.1.4 building client environment for production...
+#12 0.399 [2Ktransforming...✓ 33 modules transformed.
+#12 0.494 rendering chunks...
+#12 0.534 computing gzip size...
+#12 0.538 dist/index.html                   0.45 kB │ gzip:  0.29 kB
+#12 0.538 dist/assets/index-CQu1C4RE.css   16.23 kB │ gzip:  3.96 kB
+#12 0.538 dist/assets/index-CNFBEB7D.js   272.12 kB │ gzip: 86.33 kB
+#12 0.538 
+#12 0.538 ✓ built in 146ms
+#12 DONE 0.6s
+
+#13 [stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html
+#13 CACHED
+
+#14 [stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#14 CACHED
+
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:a3bd9fad45f0f649ed72b8d83ea9745c016c6c976642e75b0d973abe93db79ab done
+#15 exporting config sha256:fee231834810f2654d312645bcfc7d30a0762d0c4683412f7710e0b33b2253e1 done
+#15 exporting attestation manifest sha256:c0a5d2b465da68d6965fb3339512748a024595a1f8886d164ddb53a63ae3a1c5 done
+#15 exporting manifest list sha256:171600e12b0c1f89439c442649c1325e8e11a05df992a4c6389a690d019f638d done
+#15 naming to docker.io/library/jobtracker-client:latest done
+#15 unpacking to docker.io/library/jobtracker-client:latest done
+#15 DONE 0.0s

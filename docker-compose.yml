@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    container_name: jobtracker-server
+    ports: 
+      - "4000:4000"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=4000
+    networks:
+      - jobtracker-network
+    
+  client:
+    build: ./client
+    container_name: jobtracker-client
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    networks:
+      - jobtracker-network
+    
+networks:
+  jobtracker-network:
+    driver: bridge
